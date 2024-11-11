@@ -1,6 +1,5 @@
 ﻿using Miotto.Tasks.Domain.Dtos;
 using Miotto.Tasks.Domain.Entities;
-using System.Threading.Tasks;
 
 namespace Miotto.Tasks.Domain.Mappings
 {

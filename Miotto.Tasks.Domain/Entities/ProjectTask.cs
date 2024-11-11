@@ -10,7 +10,9 @@ namespace Miotto.Tasks.Domain.Entities
         public Status Status { get; set; }
         public Priority Priority { get; set; }
 
-        public virtual Guid ProjectId { get; set; }
+        public Guid ProjectId { get; set; }
         public virtual Project Project { get; set; }
+
+        public virtual IEnumerable<TaskComment> Comments { get; set; }
     }
 }

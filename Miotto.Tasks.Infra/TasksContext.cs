@@ -13,6 +13,7 @@ namespace Miotto.Tasks.Infra
         {
             modelBuilder.ApplyConfiguration(new ProjectMapping());
             modelBuilder.ApplyConfiguration(new ProjectTaskMapping());
+            modelBuilder.ApplyConfiguration(new TaskCommentMapping());
 
             base.OnModelCreating(modelBuilder);
         }

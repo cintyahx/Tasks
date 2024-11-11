@@ -4,7 +4,6 @@
     {
         public string Title { get; set; }
         public virtual IEnumerable<ProjectTask> Tasks { get; set; }
-
-        //user
+        public virtual string Owner { get; set; }
     }
 }

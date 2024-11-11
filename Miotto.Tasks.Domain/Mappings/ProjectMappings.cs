@@ -9,7 +9,8 @@ namespace Miotto.Tasks.Domain.Mappings
         {
             return new ProjectDto
             {
-                Title = task.Title
+                Title = task.Title,
+                User = new UserDto() { Name = task.Owner }
             };
         }
 
@@ -17,7 +18,8 @@ namespace Miotto.Tasks.Domain.Mappings
         {
             return new Project
             {
-                Title = taskDto.Title
+                Title = taskDto.Title,
+                Owner = taskDto.User.Name
             };
         }
     }

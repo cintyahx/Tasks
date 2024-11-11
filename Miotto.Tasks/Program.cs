@@ -1,11 +1,11 @@
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Miotto.Tasks.API.Configurations;
 using Miotto.Tasks.Domain.Interfaces;
 using Miotto.Tasks.Infra;
 using Miotto.Tasks.Infra.Repositories;
 using Miotto.Tasks.Service;
 using Miotto.Tasks.Service.Validators;
-using Microsoft.EntityFrameworkCore;
-using Miotto.Tasks.API.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +23,11 @@ builder.Services.AddValidatorsFromAssemblyContaining<ProjectValidator>();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IProjectTaskService, ProjectTaskService>();
+builder.Services.AddScoped<ITaskCommentService, TaskCommentService>();
 
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectTaskRepository, ProjectTaskRepository>();
+builder.Services.AddScoped<ITaskCommentRepository, TaskCommentRepository>();
 
 #endregion
 

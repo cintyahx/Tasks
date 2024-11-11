@@ -12,7 +12,7 @@ namespace Miotto.Tasks.Infra.Repositories
         }
 
         public async Task<IEnumerable<ProjectTask>> GetAllFromProjectAsync(Guid projectId)
-        {            
+        {
             return await GetAllFromProjectAsync(projectId, Enum.GetValues<Status>());
         }
 

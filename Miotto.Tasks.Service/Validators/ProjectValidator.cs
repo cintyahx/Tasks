@@ -19,7 +19,7 @@ namespace Miotto.Tasks.Service.Validators
                 RuleFor(x => x.Id)
                     .NotEmpty()
                     .MustAsync(async (id, _) => await projectService.AllowDeleteAsync(id))
-                    .WithMessage("There are open tasks for this project. Remove or complete tasks before deleting.");
+                    .WithMessage("There are open tasks for this project. Remove or complete them before deleting.");
             }
         }
     }

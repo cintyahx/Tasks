@@ -63,6 +63,7 @@ namespace Miotto.Tasks.Service
             task.Description = updateTaskProjectDto.Description;
             task.ExpirationDate = updateTaskProjectDto.ExpirationDate;
             task.Status = updateTaskProjectDto.Status;
+            task.ProjectId = updateTaskProjectDto.ProjectId;
         }
     }
 }
