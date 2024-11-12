@@ -20,5 +20,13 @@ namespace Miotto.Tasks.Infra.Repositories
         {
             return await Set.Where(x => x.ProjectId == projectId && x.IsActive && status.Contains(x.Status)).ToListAsync();
         }
+
+        public async Task<IEnumerable<ProjectTask>> GetTasksDoneLastMonthAsync(Guid userId)
+        {
+            return await Set.Where(x => x.UserId == userId
+                                        && x.IsActive 
+                                        && x.Status == Status.Done)
+                .ToListAsync();
+        }
     }
 }

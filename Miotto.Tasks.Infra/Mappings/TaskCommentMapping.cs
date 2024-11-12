@@ -10,7 +10,7 @@ namespace Miotto.Tasks.Infra.Mappings
         {
             builder.Property(x => x.Id).IsRequired();
             builder.Property(x => x.Description).IsRequired();
-            builder.Property(x => x.User).IsRequired();
+            builder.Property(x => x.UserId).IsRequired();
 
             builder.Property(x => x.TaskId).IsRequired();
             builder.HasOne(x => x.Task)

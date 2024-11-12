@@ -9,6 +9,7 @@ namespace Miotto.Tasks.Domain.Entities
         public DateOnly ExpirationDate { get; set; }
         public Status Status { get; set; }
         public Priority Priority { get; set; }
+        public Guid UserId { get; set; }
 
         public Guid ProjectId { get; set; }
         public virtual Project Project { get; set; }

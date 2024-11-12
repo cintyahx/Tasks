@@ -34,22 +34,10 @@ namespace Miotto.Tasks.Tests.Service.Validators
         }
 
         [Fact]
-        public async Task Should_Validate_Name_Null()
-        {
-            var userDto = new UserDto();
-
-            var validation = await _userValidator.ValidateAsync(userDto);
-
-            validation.Errors.Select(x => x.ErrorMessage).Should().BeEquivalentTo(new string[]{
-                "'Name' must not be empty.",
-            });
-        }
-
-        [Fact]
         public async Task Should_Validate_Name_Empty()
         {
             var userDto = new UserDto();
-            userDto.Name = "";
+            userDto.Id = Guid.Empty;
 
             var validation = await _userValidator.ValidateAsync(userDto);
 

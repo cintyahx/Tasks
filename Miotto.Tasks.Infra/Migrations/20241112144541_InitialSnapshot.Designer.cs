@@ -12,7 +12,7 @@ using Miotto.Tasks.Infra;
 namespace Miotto.Tasks.Infra.Migrations
 {
     [DbContext(typeof(TasksContext))]
-    [Migration("20241111151535_InitialSnapshot")]
+    [Migration("20241112144541_InitialSnapshot")]
     partial class InitialSnapshot
     {
         /// <inheritdoc />
@@ -37,16 +37,15 @@ namespace Miotto.Tasks.Infra.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Owner")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -88,6 +87,9 @@ namespace Miotto.Tasks.Infra.Migrations
                     b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
@@ -117,9 +119,8 @@ namespace Miotto.Tasks.Infra.Migrations
                     b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

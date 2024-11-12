@@ -7,13 +7,9 @@ namespace Miotto.Tasks.Service.Validators
     {
         public UserValidator()
         {
-            RuleFor(x => x.Name)
-                .NotNull()
-                .DependentRules(() => {
-                    RuleFor(x => x.Name)
-                        .NotEmpty()
-                        .WithMessage("Man, at least tell me who you are.");
-                });
+            RuleFor(x => x.Id)
+                .NotEmpty()
+                .WithMessage("Man, at least tell me who you are.");
         }
     }
 }

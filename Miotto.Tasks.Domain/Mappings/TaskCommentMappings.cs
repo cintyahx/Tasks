@@ -11,7 +11,7 @@ namespace Miotto.Tasks.Domain.Mappings
             {
                 Description = comment.Description,
                 TaskId = comment.TaskId,
-                User = new UserDto() { Name = comment.User }
+                User = new UserDto() { Id = comment.UserId }
             };
         }
 
@@ -21,7 +21,7 @@ namespace Miotto.Tasks.Domain.Mappings
             {
                 Description = commentDto.Description,
                 TaskId = commentDto.TaskId,
-                User = commentDto.User.Name
+                UserId = commentDto.User.Id
             };
         }
     }

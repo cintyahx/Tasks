@@ -81,6 +81,24 @@ namespace Miotto.Tasks.Tests.Service
             _projectTaskRepository.Verify(x => x.GetAllFromProjectAsync(It.IsAny<Guid>()), Times.Once);
         }
 
+        [Theory]
+        [InlineData(0)]
+        [InlineData(3)]
+        [InlineData(5)]
+        public async Task Should_Get_Tasks_Done_Last_Month(int tasksCount)
+        {
+            var tasksFromProject = _fixture.CreateMany<ProjectTask>(tasksCount);
+            var expected = tasksFromProject.Select(task => task.ToDto());
+
+            _projectTaskRepository.Setup(x => x.GetTasksDoneLastMonthAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(tasksFromProject);
+
+            var result = await _projectTaskService.GetTasksDoneLastMonthAsync(Guid.NewGuid());
+
+            result.Should().BeEquivalentTo(expected);
+            _projectTaskRepository.Verify(x => x.GetTasksDoneLastMonthAsync(It.IsAny<Guid>()), Times.Once);
+        }
+
         [Fact]
         public async Task Should_Get_Task()
         {

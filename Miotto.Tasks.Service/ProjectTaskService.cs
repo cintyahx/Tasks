@@ -36,6 +36,12 @@ namespace Miotto.Tasks.Service
             return tasks.Select(task => task.ToDto());
         }
 
+        public async Task<IEnumerable<ProjectTaskDto>> GetTasksDoneLastMonthAsync(Guid userId)
+        {
+            var tasks = await _taskProjectRepository.GetTasksDoneLastMonthAsync(userId);
+            return tasks.Select(task => task.ToDto());
+        }
+
         public async Task<ProjectTaskDto?> GetAsync(Guid id)
         {
             var task = await _taskProjectRepository.GetAsync(id);

@@ -5,21 +5,21 @@ namespace Miotto.Tasks.Domain.Mappings
 {
     public static class ProjectMappings
     {
-        public static ProjectDto ToDto(this Project task)
+        public static ProjectDto ToDto(this Project project)
         {
             return new ProjectDto
             {
-                Title = task.Title,
-                User = new UserDto() { Name = task.Owner }
+                Title = project.Title,
+                User = new UserDto() { Id = project.UserId }
             };
         }
 
-        public static Project ToEntity(this ProjectDto taskDto)
+        public static Project ToEntity(this ProjectDto projectDto)
         {
             return new Project
             {
-                Title = taskDto.Title,
-                Owner = taskDto.User.Name
+                Title = projectDto.Title,
+                UserId = projectDto.User.Id
             };
         }
     }

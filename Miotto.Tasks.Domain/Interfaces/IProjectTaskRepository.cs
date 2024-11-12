@@ -7,5 +7,6 @@ namespace Miotto.Tasks.Domain.Interfaces
     {
         Task<IEnumerable<ProjectTask>> GetAllFromProjectAsync(Guid projectId);
         Task<IEnumerable<ProjectTask>> GetAllFromProjectAsync(Guid projectId, Status[] status);
+        Task<IEnumerable<ProjectTask>> GetTasksDoneLastMonthAsync(Guid userId);
     }
 }

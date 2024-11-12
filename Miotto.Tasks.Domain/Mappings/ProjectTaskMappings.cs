@@ -14,6 +14,7 @@ namespace Miotto.Tasks.Domain.Mappings
                 ExpirationDate = task.ExpirationDate,
                 Status = task.Status,
                 Priority = task.Priority,
+                User = new UserDto() { Id = task.UserId }
             };
         }
 
@@ -26,6 +27,7 @@ namespace Miotto.Tasks.Domain.Mappings
                 ExpirationDate = taskDto.ExpirationDate,
                 Status = taskDto.Status,
                 Priority = taskDto.Priority,
+                UserId = taskDto.User.Id
             };
         }
     }
