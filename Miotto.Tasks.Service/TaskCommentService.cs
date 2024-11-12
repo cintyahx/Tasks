@@ -33,7 +33,7 @@ namespace Miotto.Tasks.Service
         public async Task<IEnumerable<TaskCommentDto>> GetAllFromTaskAsync(Guid taskId)
         {
             var comments = await _taskCommentRepository.GetAllFromTaskAsync(taskId);
-            return comments.Select(task => task.ToDto());
+            return comments.Select(comment => comment.ToDto());
         }
 
         public async Task<TaskCommentDto?> GetAsync(Guid id)

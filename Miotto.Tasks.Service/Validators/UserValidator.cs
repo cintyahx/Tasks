@@ -9,8 +9,11 @@ namespace Miotto.Tasks.Service.Validators
         {
             RuleFor(x => x.Name)
                 .NotNull()
-                .NotEmpty()
-                .WithMessage("Man, at least tell me who you are.");
+                .DependentRules(() => {
+                    RuleFor(x => x.Name)
+                        .NotEmpty()
+                        .WithMessage("Man, at least tell me who you are.");
+                });
         }
     }
 }

@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miotto.Tasks.API", "Miotto.Tasks\Miotto.Tasks.API.csproj", "{3CE8FA7D-A363-4F19-9A74-C837DF485EA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miotto.Tasks.API", "Miotto.Tasks\Miotto.Tasks.API.csproj", "{3CE8FA7D-A363-4F19-9A74-C837DF485EA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miotto.Tasks.Domain", "Miotto.Tasks.Domain\Miotto.Tasks.Domain.csproj", "{31CE4A48-1FB0-4308-ABBE-D1C1B8E8A3BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miotto.Tasks.Domain", "Miotto.Tasks.Domain\Miotto.Tasks.Domain.csproj", "{31CE4A48-1FB0-4308-ABBE-D1C1B8E8A3BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miotto.Tasks.Util", "Miotto.Tasks.Util\Miotto.Tasks.Util.csproj", "{E344DC21-7BB4-412F-A29F-10471588F6A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miotto.Tasks.Util", "Miotto.Tasks.Util\Miotto.Tasks.Util.csproj", "{E344DC21-7BB4-412F-A29F-10471588F6A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miotto.Tasks.Infra", "Miotto.Tasks.Infra\Miotto.Tasks.Infra.csproj", "{05089FA3-EBC3-4398-843B-387C7E26B4DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miotto.Tasks.Infra", "Miotto.Tasks.Infra\Miotto.Tasks.Infra.csproj", "{05089FA3-EBC3-4398-843B-387C7E26B4DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miotto.Tasks.Service", "Miotto.Tasks.Service\Miotto.Tasks.Service.csproj", "{59560D0B-19E1-497E-98E5-6D68797B1151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miotto.Tasks.Service", "Miotto.Tasks.Service\Miotto.Tasks.Service.csproj", "{59560D0B-19E1-497E-98E5-6D68797B1151}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miotto.Tasks.Tests", "Miotto.Tasks.Tests\Miotto.Tasks.Tests.csproj", "{6F7282A7-206D-411D-B9C2-CE43E8A4AC4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{59560D0B-19E1-497E-98E5-6D68797B1151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59560D0B-19E1-497E-98E5-6D68797B1151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59560D0B-19E1-497E-98E5-6D68797B1151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7282A7-206D-411D-B9C2-CE43E8A4AC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7282A7-206D-411D-B9C2-CE43E8A4AC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7282A7-206D-411D-B9C2-CE43E8A4AC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7282A7-206D-411D-B9C2-CE43E8A4AC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

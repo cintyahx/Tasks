@@ -6,12 +6,13 @@ namespace Miotto.Tasks.Service.Validators
 {
     public class ProjectTaskValidator : AbstractValidator<ProjectTaskDto>
     {
-        public ProjectTaskValidator(IHttpContextAccessor httpContextAccessor,
+        public ProjectTaskValidator(IHttpContextAccessor httpContextAccessor, 
             IProjectService projectService)
         {
             if (httpContextAccessor!.HttpContext!.Request.Method == HttpMethod.Post.Method)
             {
-                RuleFor(x => x.Id).Empty();
+                RuleFor(x => x.Id)
+                    .Empty();
             }
 
             if (httpContextAccessor!.HttpContext!.Request.Method == HttpMethod.Put.Method)
@@ -33,15 +34,22 @@ namespace Miotto.Tasks.Service.Validators
                 .NotEmpty()
                 .GreaterThan(DateOnly.FromDateTime(DateTime.Now));
 
-            RuleFor(x => x.Priority)
-                .NotNull()
-                .NotEmpty();
-
             RuleFor(x => x.ProjectId)
-                .NotNull()
                 .NotEmpty()
-                .MustAsync(async (id, _) => await projectService.AllowNewTaskAsync(id))
-                .WithMessage("Take it easy! There are already too many open tasks for this project.");
+                .DependentRules(() => {
+                    RuleFor(x => x.ProjectId)
+                        .MustAsync(async (projectId, _) => await projectService.GetAsync(projectId) != null)
+                        .WithMessage("Project not found")
+                        .DependentRules(() => {
+                            RuleFor(x => x.ProjectId)
+                                .MustAsync(async (projectId, _) => await projectService.AllowNewTaskAsync(projectId))
+                                .WithMessage("Take it easy! There are already too many open tasks for this project.");
+                        });
+                });
+
+            RuleFor(x => x.User)
+                .NotNull()
+                .SetValidator(new UserValidator());
         }
     }
 }
