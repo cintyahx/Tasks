@@ -11,7 +11,7 @@ namespace Miotto.Tasks.Tests.Service
     {
         private readonly Fixture _fixture;
 
-        private readonly IProjectTaskService _projectTaskService;
+        private readonly ProjectTaskService _projectTaskService;
 
         private readonly Mock<IProjectTaskRepository> _projectTaskRepository;
 

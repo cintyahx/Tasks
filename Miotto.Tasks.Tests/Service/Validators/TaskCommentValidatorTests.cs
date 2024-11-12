@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Miotto.Tasks.Domain.Dtos;
-using Miotto.Tasks.Service.Validators;
 using Miotto.Tasks.Service;
-using System;
-using System.Collections.Generic;
+using Miotto.Tasks.Service.Validators;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Miotto.Tasks.Tests.Service.Validators
 {

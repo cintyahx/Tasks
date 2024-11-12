@@ -3,7 +3,6 @@ using Miotto.Tasks.Domain.Entities;
 using Miotto.Tasks.Domain.Interfaces;
 using Miotto.Tasks.Domain.Mappings;
 using Miotto.Tasks.Service;
-using Moq;
 using System.Globalization;
 
 namespace Miotto.Tasks.Tests.Service
@@ -12,7 +11,7 @@ namespace Miotto.Tasks.Tests.Service
     {
         private readonly Fixture _fixture;
 
-        private readonly ITaskCommentService _taskCommentService;
+        private readonly TaskCommentService _taskCommentService;
 
         private readonly Mock<ITaskCommentRepository> _taskCommentRepository;
 

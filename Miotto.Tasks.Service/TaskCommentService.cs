@@ -57,7 +57,7 @@ namespace Miotto.Tasks.Service
             return comment!.ToDto();
         }
 
-        private void UpdateProperties(TaskCommentDto updateTaskCommentDto, TaskComment comment)
+        private static void UpdateProperties(TaskCommentDto updateTaskCommentDto, TaskComment comment)
         {
             comment.Description = updateTaskCommentDto.Description;
             comment.TaskId = updateTaskCommentDto.TaskId;

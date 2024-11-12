@@ -21,7 +21,7 @@ namespace Miotto.Tasks.Service
         public async Task<bool> AllowDeleteAsync(Guid id)
         {
             var tasks = await _projectTaskRepository.GetAllFromProjectAsync(id, [Status.Open, Status.Doing]);
-            return tasks.Count() == 0;
+            return !tasks.Any();
         }
 
         public async Task<bool> AllowNewTaskAsync(Guid id)

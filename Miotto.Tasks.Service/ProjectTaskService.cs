@@ -57,7 +57,7 @@ namespace Miotto.Tasks.Service
             return task!.ToDto();
         }
 
-        private void UpdateProperties(ProjectTaskDto updateTaskProjectDto, ProjectTask task)
+        private static void UpdateProperties(ProjectTaskDto updateTaskProjectDto, ProjectTask task)
         {
             task.Title = updateTaskProjectDto.Title;
             task.Description = updateTaskProjectDto.Description;

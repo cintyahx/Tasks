@@ -12,7 +12,7 @@ namespace Miotto.Tasks.Tests.Service
     {
         private readonly Fixture _fixture;
 
-        private readonly IProjectService _taskCommentService;
+        private readonly ProjectService _projectService;
 
         private readonly Mock<IProjectRepository> _projectRepository;
         private readonly Mock<IProjectTaskRepository> _projectTaskRepository;
@@ -25,7 +25,7 @@ namespace Miotto.Tasks.Tests.Service
             _projectRepository = new Mock<IProjectRepository>();
             _projectTaskRepository = new Mock<IProjectTaskRepository>();
 
-            _taskCommentService = new ProjectService(_projectRepository.Object, _projectTaskRepository.Object);
+            _projectService = new ProjectService(_projectRepository.Object, _projectTaskRepository.Object);
         }
 
         [Theory]
@@ -39,7 +39,7 @@ namespace Miotto.Tasks.Tests.Service
             _projectTaskRepository.Setup(x => x.GetAllFromProjectAsync(It.IsAny<Guid>(), It.IsAny<Status[]>()))
                 .ReturnsAsync(tasksFromProject);
 
-            var result = await _taskCommentService.AllowDeleteAsync(Guid.NewGuid());
+            var result = await _projectService.AllowDeleteAsync(Guid.NewGuid());
 
             result.Should().Be(allowed);
 
@@ -58,7 +58,7 @@ namespace Miotto.Tasks.Tests.Service
             _projectTaskRepository.Setup(x => x.GetAllFromProjectAsync(It.IsAny<Guid>(), It.IsAny<Status[]>()))
                 .ReturnsAsync(tasksFromProject);
 
-            var result = await _taskCommentService.AllowNewTaskAsync(Guid.NewGuid());
+            var result = await _projectService.AllowNewTaskAsync(Guid.NewGuid());
 
             result.Should().Be(allowed);
 
@@ -74,7 +74,7 @@ namespace Miotto.Tasks.Tests.Service
             _projectRepository.Setup(x => x.CreateAsync(It.IsAny<Project>()))
                 .ReturnsAsync(expected);
 
-            var result = await _taskCommentService.CreateAsync(projectDto);
+            var result = await _projectService.CreateAsync(projectDto);
 
             result.Should().BeEquivalentTo(expected);
             _projectRepository.Verify(x => x.CreateAsync(It.IsAny<Project>()), Times.Once);
@@ -83,7 +83,7 @@ namespace Miotto.Tasks.Tests.Service
         [Fact]
         public async Task Should_Verify_Project_Not_Found_When_Delete()
         {
-            await _taskCommentService.DeleteAsync(Guid.NewGuid());
+            await _projectService.DeleteAsync(Guid.NewGuid());
 
             _projectRepository.Verify(x => x.GetAsync(It.IsAny<Guid>()), Times.Once);
             _projectRepository.Verify(x => x.DeleteAsync(It.IsAny<Project>()), Times.Never);
@@ -98,7 +98,7 @@ namespace Miotto.Tasks.Tests.Service
             _projectRepository.Setup(x => x.GetAsync(It.IsAny<Guid>()))
                 .ReturnsAsync(project);
 
-            await _taskCommentService.DeleteAsync(project.Id);
+            await _projectService.DeleteAsync(project.Id);
 
             _projectRepository.Verify(x => x.GetAsync(It.IsAny<Guid>()), Times.Once);
             _projectRepository.Verify(x => x.DeleteAsync(It.IsAny<Project>()), Times.Once);
@@ -113,7 +113,7 @@ namespace Miotto.Tasks.Tests.Service
             _projectRepository.Setup(x => x.GetAsync(It.IsAny<Guid>()))
                 .ReturnsAsync(project);
 
-            var result = await _taskCommentService.GetAsync(project.Id);
+            var result = await _projectService.GetAsync(project.Id);
 
             result.Should().BeEquivalentTo(expected);
             _projectRepository.Verify(x => x.GetAsync(It.IsAny<Guid>()), Times.Once);
