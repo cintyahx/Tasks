@@ -1,5 +1,6 @@
 ﻿using Miotto.Tasks.Domain.Dtos;
 using Miotto.Tasks.Domain.Entities;
+using Miotto.Tasks.Domain.Enums;
 using Miotto.Tasks.Domain.Interfaces;
 using Miotto.Tasks.Domain.Mappings;
 
@@ -70,6 +71,10 @@ namespace Miotto.Tasks.Service
             task.ExpirationDate = updateTaskProjectDto.ExpirationDate;
             task.Status = updateTaskProjectDto.Status;
             task.ProjectId = updateTaskProjectDto.ProjectId;
+
+            if (updateTaskProjectDto.Status == Status.Done)
+                task.FinishDate = DateTime.Now;
+
         }
     }
 }

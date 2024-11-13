@@ -12,6 +12,7 @@ namespace Miotto.Tasks.Infra.Mappings
             builder.Property(x => x.Title).IsRequired();
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.ExpirationDate).IsRequired();
+            builder.Property(x => x.FinishDate);
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
 

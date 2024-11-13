@@ -17,7 +17,7 @@ namespace Miotto.Tasks.API.Controllers
 
         [HttpGet("tasks-done-last-month/{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ProjectTaskDto))]
-        public async Task<IActionResult> GetAll(Guid userId, [FromBody]UserDto currentUserDto)
+        public async Task<IActionResult> GetAll(Guid userId, [FromBody] UserDto currentUserDto)
         {
             if (!currentUserDto.IsManager)
                 return Unauthorized();

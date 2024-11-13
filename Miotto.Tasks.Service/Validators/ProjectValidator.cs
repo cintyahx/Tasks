@@ -6,7 +6,7 @@ namespace Miotto.Tasks.Service.Validators
 {
     public class ProjectValidator : AbstractValidator<ProjectDto>
     {
-        public ProjectValidator(IHttpContextAccessor httpContextAccessor, 
+        public ProjectValidator(IHttpContextAccessor httpContextAccessor,
             IProjectService projectService)
         {
             if (httpContextAccessor!.HttpContext!.Request.Method == HttpMethod.Post.Method)

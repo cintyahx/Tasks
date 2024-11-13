@@ -14,6 +14,7 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="FluentAssertions" Version="6.12.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="ReportGenerator" Version="5.3.11" />
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Miotto.Tasks.Domain\Miotto.Tasks.Domain.csproj" />
+    <ProjectReference Include="..\Miotto.Tasks.Infra\Miotto.Tasks.Infra.csproj" />
     <ProjectReference Include="..\Miotto.Tasks.Service\Miotto.Tasks.Service.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace Miotto.Tasks.Domain.Interfaces
+﻿namespace Miotto.Tasks.Domain.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : IEntity
     {

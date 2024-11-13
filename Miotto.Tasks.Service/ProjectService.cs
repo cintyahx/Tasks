@@ -11,7 +11,7 @@ namespace Miotto.Tasks.Service
         private readonly IProjectRepository _projectRepository;
         private readonly IProjectTaskRepository _projectTaskRepository;
 
-        public ProjectService(IProjectRepository projectRepository, 
+        public ProjectService(IProjectRepository projectRepository,
             IProjectTaskRepository projectTaskRepository)
         {
             _projectRepository = projectRepository;

@@ -24,8 +24,10 @@ namespace Miotto.Tasks.Infra.Repositories
         public async Task<IEnumerable<ProjectTask>> GetTasksDoneLastMonthAsync(Guid userId)
         {
             return await Set.Where(x => x.UserId == userId
-                                        && x.IsActive 
-                                        && x.Status == Status.Done)
+                                        && x.IsActive
+                                        && x.Status == Status.Done
+                                        && DateTime.Now.Subtract(x.FinishDate.GetValueOrDefault()).Days > 0
+                                        && DateTime.Now.Subtract(x.FinishDate.GetValueOrDefault()).Days <= 30)
                 .ToListAsync();
         }
     }
