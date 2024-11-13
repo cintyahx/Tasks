@@ -10,20 +10,11 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Docker
 
-  mssql-tools:
-    image: mcr.microsoft.com/mssql-tools:latest
-    restart: no
-    command: "/opt/mssql-tools/bin/sqlcmd -S sqlserver -l 60 -U sa -P 2Secure*Password2 -d master -i /tmp/CreateDatabase.sql"
-    depends_on:
-      - sqlserver
-    volumes:
-      - ./Scripts/CreateDatabase.sql:/tmp/CreateDatabase.sql
-
   sqlserver:
     container_name: sqlserver
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - 5533:1433
     environment:
-      ACCEPT_EULA: Y
-      SA_PASSWORD: 2Secure*Password2
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "tasks@123"
