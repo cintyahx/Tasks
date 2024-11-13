@@ -3,23 +3,26 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Miotto.Tasks/Miotto.Tasks.csproj", "Miotto.Tasks/"]
-RUN dotnet restore "./Miotto.Tasks/Miotto.Tasks.csproj"
+COPY ["Miotto.Tasks/Miotto.Tasks.API.csproj", "Miotto.Tasks/"]
+COPY ["Miotto.Tasks.Infra/Miotto.Tasks.Infra.csproj", "Miotto.Tasks.Infra/"]
+COPY ["Miotto.Tasks.Domain/Miotto.Tasks.Domain.csproj", "Miotto.Tasks.Domain/"]
+COPY ["Miotto.Tasks.Service/Miotto.Tasks.Service.csproj", "Miotto.Tasks.Service/"]
+RUN dotnet restore "./Miotto.Tasks/Miotto.Tasks.API.csproj"
 COPY . .
 WORKDIR "/src/Miotto.Tasks"
-RUN dotnet build "./Miotto.Tasks.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./Miotto.Tasks.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Miotto.Tasks.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Miotto.Tasks.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Miotto.Tasks.dll"]
+ENTRYPOINT ["dotnet", "Miotto.Tasks.API.dll"]

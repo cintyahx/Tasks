@@ -44,11 +44,8 @@ context.Database.Migrate();
 #endregion
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
 

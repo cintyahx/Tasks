@@ -3,18 +3,27 @@ services:
     container_name: tasks-api
     depends_on:
       - sqlserver
-    build: ./src
+    build: ./Miotto.Tasks/
     ports:
-      - 8080
-      - 8081
+      - 8080:80
+      - 8081:443
     environment:
       ASPNETCORE_ENVIRONMENT: Docker
+
+  mssql-tools:
+    image: mcr.microsoft.com/mssql-tools:latest
+    restart: no
+    command: "/opt/mssql-tools/bin/sqlcmd -S sqlserver -l 60 -U sa -P 2Secure*Password2 -d master -i /tmp/CreateDatabase.sql"
+    depends_on:
+      - sqlserver
+    volumes:
+      - ./Scripts/CreateDatabase.sql:/tmp/CreateDatabase.sql
 
   sqlserver:
     container_name: sqlserver
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-      - 1434:1433
+      - 5533:1433
     environment:
       ACCEPT_EULA: Y
-      SA_PASSWORD: tasks@123
+      SA_PASSWORD: 2Secure*Password2
